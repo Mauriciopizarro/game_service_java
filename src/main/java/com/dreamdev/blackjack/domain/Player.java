@@ -1,14 +1,13 @@
 package com.dreamdev.blackjack.domain;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 
 @Getter
@@ -23,6 +22,8 @@ public class Player {
     public String status;
     @Field
     public boolean hasHiddenCard;
+
+    Logger logger = LoggerFactory.getLogger(Player.class);
 
     public Player(List<Card> cards, String name, String status){
         this.cards = cards;
@@ -55,8 +56,8 @@ public class Player {
         List<Integer> totalPointsList = new ArrayList<>();
         boolean thereIsAs = false;
 
-        for (Card card: cards){
-            if (card instanceof As){
+        for (Card card: this.cards){
+            if (Objects.equals(card.symbol, "A")){
                 thereIsAs = true;
             }
             totalPoints += card.getValue();
