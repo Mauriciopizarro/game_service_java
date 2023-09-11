@@ -4,6 +4,7 @@ import com.dreamdev.blackjack.application.StatusService;
 import com.dreamdev.blackjack.application.exceptions.EmptyQueryResultException;
 import com.dreamdev.blackjack.application.exceptions.IncorrectGameId;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +17,8 @@ import java.util.Map;
 @RequestMapping("/api/v1/game")
 @RequiredArgsConstructor
 public class StatusGameController {
-
-    private final StatusService statusService;
+    @Autowired
+    public StatusService statusService;
 
 
     @GetMapping("/status/{gameId}")

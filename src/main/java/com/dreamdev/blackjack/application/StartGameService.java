@@ -1,18 +1,17 @@
 package com.dreamdev.blackjack.application;
-
 import com.dreamdev.blackjack.application.exceptions.IncorrectGameId;
 import com.dreamdev.blackjack.application.implementations.GameImplementation;
 import com.dreamdev.blackjack.domain.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class StartGameService {
-
-    public final GameImplementation gameRepo;
+    @Autowired
+    public GameImplementation gameRepo;
 
 
     public Game startGame(Map<String, String> players , String gameId) throws IncorrectGameId {
@@ -95,7 +94,5 @@ public class StartGameService {
         Collections.shuffle(cards);
         return cards;
     }
-
-
 
 }

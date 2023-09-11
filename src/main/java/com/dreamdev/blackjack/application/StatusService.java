@@ -4,6 +4,7 @@ import com.dreamdev.blackjack.application.exceptions.EmptyQueryResultException;
 import com.dreamdev.blackjack.application.exceptions.IncorrectGameId;
 import com.dreamdev.blackjack.application.implementations.GameImplementation;
 import com.dreamdev.blackjack.domain.Game;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import java.util.Map;
@@ -12,8 +13,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class StatusService {
-
-    public final GameImplementation gameRepo;
+    @Autowired
+    public GameImplementation gameRepo;
     //Logger logger = LoggerFactory.getLogger(StatusService.class);
 
     public Map<String, Object> gameStatus(String gameId) throws IncorrectGameId, EmptyQueryResultException {

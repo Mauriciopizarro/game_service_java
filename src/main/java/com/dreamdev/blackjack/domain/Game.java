@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.*;
@@ -120,7 +122,7 @@ public class Game {
     public String getPlayerIdOfCurrentTurn(){
         Player player = turnOrder.get(turnPosition);
 
-        if (player instanceof Croupier){
+        if (player.getId() == null){
             return player.getName();
         }
         return player.getId();
