@@ -1,5 +1,4 @@
 package com.dreamdev.blackjack.infrastructure.controllers;
-
 import com.dreamdev.blackjack.application.StandService;
 import com.dreamdev.blackjack.domain.exceptions.GameFinishedError;
 import com.dreamdev.blackjack.domain.exceptions.IncorrectPlayerTurn;
@@ -25,6 +24,7 @@ public class StandController {
         Map<String, String> response = new HashMap<>();
         try {
             standService.stand(gameId, playerId);
+            response.put("message", "Stood player "+ playerId);
         }
         catch (IncorrectPlayerTurn e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Is not a turn to player entered or id may be incorrect ");
@@ -33,7 +33,6 @@ public class StandController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The game_id entered is finished");
         }
 
-        response.put("message", "Stood player "+ playerId);
         return response;
     }
 }
