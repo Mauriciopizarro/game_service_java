@@ -1,5 +1,4 @@
 package com.dreamdev.blackjack.infrastructure.controllers;
-
 import com.dreamdev.blackjack.application.StatusService;
 import com.dreamdev.blackjack.application.exceptions.EmptyQueryResultException;
 import com.dreamdev.blackjack.application.exceptions.IncorrectGameId;

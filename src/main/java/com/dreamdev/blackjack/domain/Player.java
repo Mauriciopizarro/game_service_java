@@ -23,7 +23,6 @@ public class Player {
     @Field
     public boolean hasHiddenCard;
 
-    Logger logger = LoggerFactory.getLogger(Player.class);
 
     public Player(List<Card> cards, String name, String status){
         this.cards = cards;
