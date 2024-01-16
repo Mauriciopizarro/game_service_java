@@ -1,5 +1,5 @@
 package com.dreamdev.blackjack.application;
-import com.dreamdev.blackjack.application.exceptions.IncorrectGameId;
+
 import com.dreamdev.blackjack.application.implementations.GameImplementation;
 import com.dreamdev.blackjack.domain.*;
 import lombok.RequiredArgsConstructor;
@@ -9,31 +9,25 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class StartGameService {
+public class CreateGameService {
+
     @Autowired
     public GameImplementation gameRepo;
 
-
-    public Game startGame(Map<String, String> players , String gameId) throws IncorrectGameId {
-
-        if (gameId.isEmpty()){
-            throw new IncorrectGameId();
-        }
+    public Game createGame(String playerName, String playerId) {
 
         // empty playerList checks here
         List<Card> deck = createDeck();
-        Game game = new Game(deck, "started", gameId);
+        Game game = new Game(deck, "testing");
         List<Player> playerList = new ArrayList<>();
         List<Card> cards = new ArrayList<>();
 
         // create iterator(hashmap) for more than 1 player
-        Player player = new Player(cards, (String) players.get("name"), (String) players.get("id"), "waiting_turn"); //Replace player for dict sent by rabbitMQ
-        playerList.add(player);
-
+        Player admin = new Player(cards, playerName, playerId, "waiting_turn");
+        playerList.add(admin);
         game.addPlayers(playerList);
         game.dealInitialCards();
-        gameRepo.saveGame(game);
-        return game;
+        return gameRepo.saveGame(game);
     }
 
     public static List<Card> createDeck(){

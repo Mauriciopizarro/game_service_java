@@ -32,10 +32,9 @@ public class Game {
     //Logger logger = LoggerFactory.getLogger(Game.class);
 
 
-    public Game(List<Card> deck, String status, String gameId){
+    public Game(List<Card> deck, String status){
         this.deck = deck;
         this.gameStatus = status;
-        this.id = gameId;
     }
 
 

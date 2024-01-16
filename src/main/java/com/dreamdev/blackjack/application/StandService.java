@@ -1,5 +1,6 @@
 package com.dreamdev.blackjack.application;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.dreamdev.blackjack.application.implementations.GameImplementation;
 import com.dreamdev.blackjack.domain.Game;
 import com.dreamdev.blackjack.domain.exceptions.GameFinishedError;

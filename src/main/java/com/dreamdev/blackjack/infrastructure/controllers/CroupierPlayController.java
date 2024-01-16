@@ -4,6 +4,7 @@ import com.dreamdev.blackjack.application.CroupierPlayService;
 import com.dreamdev.blackjack.domain.exceptions.GameFinishedError;
 import com.dreamdev.blackjack.domain.exceptions.NotCroupierTurnError;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/game")
 public class CroupierPlayController {
-
-    public final CroupierPlayService croupierService;
+    @Autowired
+    public CroupierPlayService croupierService;
 
     @PostMapping("/croupier_play/{gameId}")
     public Map<String, String> croupierPlay(@PathVariable String gameId){
