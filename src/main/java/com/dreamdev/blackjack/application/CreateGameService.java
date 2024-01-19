@@ -18,7 +18,7 @@ public class CreateGameService {
 
         // empty playerList checks here
         List<Card> deck = createDeck();
-        Game game = new Game(deck, "testing");
+        Game game = new Game(deck, "playing");
         List<Player> playerList = new ArrayList<>();
         List<Card> cards = new ArrayList<>();
 
